@@ -55,7 +55,7 @@ set softtabstop=4
 set smarttab
 set expandtab
 set shiftround
-set relativenumber number
+set relativenumber
 set foldlevel=99
 set foldmethod=indent
 set conceallevel=0

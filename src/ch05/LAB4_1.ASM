@@ -1,13 +1,14 @@
+; both (1) and (2)
 assume cs:code
 code segment 
-    mov ax,0
+    mov ax,0020h
     mov ds,ax
 
     mov cx,63
 
-    mov bx,200
+    mov bx,0
 s:
-    mov [bx],63-cx
+    mov [bx],bx
     inc bx
     loop s
 
