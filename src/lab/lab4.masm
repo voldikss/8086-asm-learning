@@ -1,0 +1,18 @@
+assume cs:code
+code segment 
+    mov ax,0
+    mov ds,ax
+
+    mov cx,63
+
+    mov bx,200
+s:
+    mov [bx],63-cx
+    inc bx
+    loop s
+
+    mov ax,4c00h
+    int 21h
+code ends
+
+end
