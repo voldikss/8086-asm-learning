@@ -7,10 +7,11 @@
 " ========================================================================
 
 filetype plugin indent on
-autocmd BufNewFile,BufRead *.masm  setfiletype masm
-
 syntax on
-source c:\util\VIM73\syntax\masm.vim
+
+set runtimepath^=c:\util\VIM73
+
+" colorscheme
 source c:\util\VIM73\colors\delek.vim
 
 " General: [[[1
@@ -36,7 +37,6 @@ set nospell
 set guicursor=
 set title
 set ruler
-set cursorline
 set laststatus=2
 set showtabline=2
 set guioptions-=e
@@ -131,3 +131,63 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-b> <S-Left>
 cnoremap <C-f> <S-Right>
+" Functions: [[[2
+
+function! s:template1()
+  let tpl = [
+    \ 'assume cs:code',
+    \ 'code segment',
+    \ 'start:',
+    \ '',
+    \ '    mov ax,4c00h',
+    \ '    int 21h',
+    \ 'code ends',
+    \ 'end start'
+    \ ]
+  call append(0, tpl)
+  normal dd
+endfunction
+
+function! s:template2()
+  let tpl = [
+    \ 'assume cs:code,ds:data',
+    \ 'data segment',
+    \ 'data ends',
+    \ '',
+    \ 'code segment',
+    \ 'start:',
+    \ '',
+    \ '    mov ax,4c00h',
+    \ '    int 21h',
+    \ 'code ends',
+    \ 'end start'
+    \ ]
+  call append(0, tpl)
+  normal dd
+endfunction
+
+function! s:template3()
+  let tpl = [
+    \ 'assume cs:code,ds:data,ss:stack',
+    \ 'data segment',
+    \ 'data ends',
+    \ '',
+    \ 'stack segment',
+    \ 'stack ends',
+    \ '',
+    \ 'code segment',
+    \ 'start:',
+    \ '',
+    \ '    mov ax,4c00h',
+    \ '    int 21h',
+    \ 'code ends',
+    \ 'end start'
+    \ ]
+  call append(0, tpl)
+  normal dd
+endfunction
+
+" Command: [[[2
+command Template1 call s:template1()
+command Template2 call s:template2()
+command Template3 call s:template3()
