@@ -11,7 +11,7 @@ autocmd BufNewFile,BufRead *.masm  setfiletype masm
 
 syntax on
 source c:\util\VIM73\syntax\masm.vim
-source c:\util\VIM73\colors\industry.vim
+source c:\util\VIM73\colors\delek.vim
 
 " General: [[[1
 set backspace=eol,start,indent
@@ -41,6 +41,7 @@ set laststatus=2
 set showtabline=2
 set guioptions-=e
 set scrolloff=6
+set nocursorline
 " match & search [[[2
 set showmatch
 set matchtime=0
@@ -68,6 +69,7 @@ let mapleader   = ';'
 let g:mapleader = ';'
 inoremap <C-c> <Esc>
 inoremap <C-[> <Esc>
+inoremap <expr> <CR> pumvisible() ? '<C-Y>' : '<CR>'
 " General: [[[2
 noremap  H  ^
 noremap  L  $
