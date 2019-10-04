@@ -136,12 +136,15 @@ cnoremap <C-f> <S-Right>
 function! s:template1()
   let tpl = [
     \ 'assume cs:code',
+    \ '',
     \ 'code segment',
+    \ '',
     \ 'start:',
     \ '',
     \ '    mov ax,4c00h',
     \ '    int 21h',
     \ 'code ends',
+    \ '',
     \ 'end start'
     \ ]
   call append(0, tpl)
@@ -151,15 +154,18 @@ endfunction
 function! s:template2()
   let tpl = [
     \ 'assume cs:code,ds:data',
+    \ '',
     \ 'data segment',
     \ 'data ends',
     \ '',
     \ 'code segment',
+    \ '',
     \ 'start:',
     \ '',
     \ '    mov ax,4c00h',
     \ '    int 21h',
     \ 'code ends',
+    \ '',
     \ 'end start'
     \ ]
   call append(0, tpl)
@@ -169,6 +175,7 @@ endfunction
 function! s:template3()
   let tpl = [
     \ 'assume cs:code,ds:data,ss:stack',
+    \ '',
     \ 'data segment',
     \ 'data ends',
     \ '',
@@ -176,11 +183,13 @@ function! s:template3()
     \ 'stack ends',
     \ '',
     \ 'code segment',
+    \ '',
     \ 'start:',
     \ '',
     \ '    mov ax,4c00h',
     \ '    int 21h',
     \ 'code ends',
+    \ '',
     \ 'end start'
     \ ]
   call append(0, tpl)
